@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "85ce4e1f-43f4-4c73-93fa-d4803bb9769a",
+		"name": "API DZ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40078994"
+	},
+	"item": [
+		{
+			"name": "1. Авторизация сотрудник 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Exploratory1@1.1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Exploratory1@1.1",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/auth/access_token"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Задача с описанием",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer MDA4NTM0NGY1MWYxZTEzZTg3NTczNGVhYjNlY2ZlNDljYmQ3MmU2ZTkwZGNjZTNhNmYxYjEyODU5ODViYTk3Yg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contentType\": \"Task\",\r\n    \"name\": \"Абоба\",\r\n    \"deadline\": null,\r\n    \"parent\": null,\r\n    \"isUrgent\": false,\r\n    \"isTemplate\": false,\r\n    \"owner\": {\r\n        \"id\": \"1000104\",\r\n        \"contentType\": \"Employee\"\r\n    },\r\n    \"responsible\": {\r\n        \"id\": \"1000104\",\r\n        \"contentType\": \"Employee\"\r\n    },\r\n    \"contractor\": null,\r\n    \"attaches\": [],\r\n    \"statement\": \"<p>Тестируем абобу</p>\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/task"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Авторизация Сотрудник 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Exploratory2@1.1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Exploratory2@1.1",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/auth/access_token"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Принятие задачи под пользователем 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YzMzZTFhMDkzMTM2MmQ1NDhmNDdmZjY2NTkwMWU3NWQ2OGFhYzk2ZDYxYTJmZjE5N2RhNTBiZDRiOTgwNDllOA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"act_accept_task\",\r\n    \"checkTodos\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/task/1011104/doAction"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Завершение задачи под пользователем 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YzMzZTFhMDkzMTM2MmQ1NDhmNDdmZjY2NTkwMWU3NWQ2OGFhYzk2ZDYxYTJmZjE5N2RhNTBiZDRiOTgwNDllOA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"act_done\",\r\n    \"checkTodos\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/task/1011104/doAction"
+			},
+			"response": []
+		},
+		{
+			"name": "6. Добавление комментария",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer M2E3OTdkNDFhNjMyZjAyZWZlYjIxMmNkNDllNjA3NzI0ZDhhZjE3MjM0YjZiOTM2ZDZmNTYzNTc1M2U1MjE5Yw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contentType\": \"CommentCreateActionRequest\",\r\n    \"comment\": {\r\n        \"contentType\": \"Comment\",\r\n        \"content\": \"<p>123</p>\",\r\n        \"attaches\": [],\r\n        \"workTime\": null,\r\n        \"workDate\": {\r\n            \"contentType\": \"DateTime\",\r\n            \"value\": \"2024-12-10T13:27:32.938Z\"\r\n        },\r\n        \"completed\": 0,\r\n        \"owner\": {\r\n            \"id\": \"1000105\",\r\n            \"contentType\": \"Employee\"\r\n        },\r\n        \"subject\": {\r\n            \"id\": \"1011104\",\r\n            \"contentType\": \"Task\"\r\n        },\r\n        \"timeCreated\": {\r\n            \"contentType\": \"DateTime\",\r\n            \"value\": \"2024-12-10T13:29:42.439Z\"\r\n        }\r\n    },\r\n    \"transports\": [\r\n        {}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/task/1011104/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "7. Вторая авторизация сотрудника 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Exploratory1@1.1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Exploratory1@1.1",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/auth/access_token"
+			},
+			"response": []
+		},
+		{
+			"name": "8. Принятие завершенной задачи",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer YzE3YjlmZmRkNWZkMzlmNTcwOThiMmYxYmRhZDk4YTdiNjZmNjJhZmM5MjYzNjZhZWJlNmNjYmNjMmIwZDNjZQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"act_accept_work\",\r\n    \"checkTodos\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/task/1011104/doAction"
+			},
+			"response": []
+		},
+		{
+			"name": "9. DELETE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer NWY5YjAzNDdhNjFiZjkzNzZhMGMwZjZhNmMzOTMxZGRjNDZlODlmNTM5NmZhYjhjMzFjYzg0YjdmMDI0NThhMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://radio-shop.megaplan.by/api/v3/integrationWidget"
+			},
+			"response": []
+		}
+	]
+}
